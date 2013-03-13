@@ -12,7 +12,7 @@ module SessionsHelper
 		!current_user.nil?
 	end
 
-	def cuurent_user=(user)
+	def current_user=(user)
 		@current_user = user
 	end
 
