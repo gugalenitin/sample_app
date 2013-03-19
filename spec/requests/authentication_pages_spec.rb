@@ -107,6 +107,19 @@ describe "Authentication" do
 			end
 		end
 
+		describe "in the microposts controller" do
+
+			describe "submitting a POST request to the Microposts#create action" do
+				before { post microposts_path }
+				specify { response.should redirect_to(signin_path) } 
+			end
+
+			describe "submitting a DELETE request to the Microposts#destroy action" do
+				before { delete micropost_path(FactoryGirl.create(:micropost)) }
+				specify { response.should redirect_to(signin_path) }
+			end
+		end
+
 		describe "as wrong user" do
 			let(:user) { FactoryGirl.create(:user) }
 			let(:wrong_user) { FactoryGirl.create(:user, email: "wrong@example.com") }
@@ -118,7 +131,7 @@ describe "Authentication" do
 				it { should_not have_selector('title', text: 'Edit User') }
 			end 
 
-			describe "submitting a PUT request to the Users#update" do
+			describe "submitting a PUT request to the Users#update action" do
 				before { put user_path(wrong_user) }
 				specify { response.should redirect_to(root_path) }
 			end

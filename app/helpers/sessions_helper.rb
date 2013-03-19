@@ -39,4 +39,14 @@ module SessionsHelper
 		session.delete(:return_to)
 	end
 
+	def signed_in_user
+		# This line will be executed even if the user is signed in.
+		# Use flash with redirect_to.
+		# flash[:notice] = "Please Sign In!"
+		unless signed_in?
+			store_location
+			redirect_to signin_path, notice: "Please Sign In!"
+		end
+	end
+
 end

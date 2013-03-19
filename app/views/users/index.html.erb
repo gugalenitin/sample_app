@@ -1,6 +1,12 @@
 <% provide(:title, 'All Users') %>
 <h1>All Users</h1>
 
+<!--
+	To show the page links(above).
+	No need of arguments here since we are in users_controller.
+	It will automatically put @users variable
+	<%= will_paginate @users %>
+-->
 <%= will_paginate %>
 
 <ul class="users">
@@ -10,7 +16,10 @@
 					OR
 		<%= render u %> 
 	<% end %> -->
+	<!-- For each list item it calls _user.html.erb file. -->
+	<!-- Rails creates variable with same name as partial(_user.html.erb) => user -->
 	<%= render @users %>
 </ul>
 
+<!-- To show the page links(below) -->
 <%= will_paginate %>
