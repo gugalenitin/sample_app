@@ -1,0 +1,7 @@
+<!-- We are directly creating relationships from here since we do not have any 
+     validations to return back to this page again. No need of creating instance of relationship and then building it on submitting. -->
+<%= form_for(current_user.relationships.build(followed_id: @user.id),
+             remote: true) do |f| %>
+  <div><%= f.hidden_field :followed_id %></div>
+  <%= f.submit "Follow", class: "btn btn-large btn-primary" %>
+<% end  %>

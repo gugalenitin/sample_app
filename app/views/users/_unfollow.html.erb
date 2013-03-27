@@ -1,0 +1,7 @@
+<!-- We are directly creating relationships from here since we do not have any 
+     validations to return back to this page again. No need of creating instance of relationship and then building it on submitting. -->
+<%= form_for(current_user.relationships.find_by_followed_id(@user),
+				     html: { method: :delete },
+             remote: true) do |f| %>
+  <%= f.submit "Unfollow", class: "btn btn-large" %>
+<% end  %>
